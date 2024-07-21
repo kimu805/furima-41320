@@ -63,3 +63,7 @@
 | street     | string     | null: false |
 | building   | string     | null: false |
 | call       | integer    | null: false |
+
+### Association
+
+- has_many :purchases
