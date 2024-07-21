@@ -11,9 +11,8 @@
 | first_name_kanji   | string  | null: false |
 | last_name_kana     | string  | null: false |
 | first_name_kana    | string  | null: false |
-| birthday_year      | integer | null: false |
-| birthday_month     | integer | null: false |
-| birthday_day       | integer | null: false |
+| birthday           | date    | null: false |
+
 
 ### Association
 
@@ -30,7 +29,7 @@
 | category_id         | integer    | null: false |
 | condition_id        | integer    | null: false |
 | shipping_pay_id     | integer    | null: false |
-| shipping_origin_id  | integer    | null: false |
+| prefecture_id       | integer    | null: false |
 | shipping_time_id    | integer    | null: false |
 | price               | integer    | null: false |
 
@@ -64,8 +63,6 @@
 | building      | string     |
 | call          | string     | null: false |
 | purchase      | references | null: false, foreign_key: true |
-
-
 
 ### Association
 
