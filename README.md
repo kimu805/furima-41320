@@ -2,11 +2,18 @@
 
 ## users テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| nickname           | string | null: false |
-| email              | string | null: false, unique: true |
-| encrypted_password | string | null: false |
+| Column             | Type    | Options     |
+| ------------------ | ------- | ----------- |
+| nickname           | string  | null: false |
+| email              | string  | null: false, unique: true |
+| encrypted_password | string  | null: false |
+| last_name_kanji    | string  | null: false |
+| first_name_kanji   | string  | null: false |
+| last_name_kana     | string  | null: false |
+| first_name_kana    | string  | null: false |
+| birthday_year      | integer | null: false |
+| birthday_month     | integer | null: false |
+| birthday_day       | integer | null: false |
 
 ### Association
 
@@ -27,7 +34,6 @@
 | shipping_time_id    | integer    | null: false |
 | price               | integer    | null: false |
 
-
 ### Association
 
 - belongs_to :user
@@ -41,12 +47,11 @@
 | user     | references | null: false, foreign_key: true |
 | item     | references | null: false, foreign_key: true |
 
-
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :delivery
+- has_one :delivery
 
 ## deliveries テーブル
 
@@ -64,4 +69,4 @@
 
 ### Association
 
-- has_many :purchases
+- belongs_to :purchase
