@@ -33,27 +33,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
       it "Category_idが空では登録できない" do
-        @item.category_id = nil
+        @item.category_id = "1"
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       it "Condition_idが空では登録できない" do
-        @item.condition_id = nil
+        @item.condition_id = "1"
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
       it "Shipping_pay_idが空では登録できない" do
-        @item.shipping_pay_id = nil
+        @item.shipping_pay_id = "1"
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping pay can't be blank")
       end
       it "Prefecture_idが空では登録できない" do
-        @item.prefecture_id = nil
+        @item.prefecture_id = "1"
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
       it "Shipping_time_idが空では登録できない" do
-        @item.shipping_time_id = nil
+        @item.shipping_time_id = "1"
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping time can't be blank")
       end
@@ -71,6 +71,11 @@ RSpec.describe Item, type: :model do
         @item.price = "12345678"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      end
+      it "Priceに半角数値以外が含まれると保存できない" do
+        @item.price = "azazaz"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
       end
     end
   end
