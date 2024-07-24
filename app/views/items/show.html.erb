@@ -16,7 +16,7 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        <%= @item.price %>
+        ￥<%= @item.price.to_fs(:delimited) %>
       </span>
       <span class="item-postage">
         <%= @item.shipping_pay.name %>
