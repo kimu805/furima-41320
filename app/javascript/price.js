@@ -4,6 +4,10 @@ function price () {
   const profit = document.getElementById("profit")
 
   price.addEventListener("input", () => {
+    if (!price) {
+      return false
+    }
+    
     const priceValue = price.value
     
     addTaxPrice.innerHTML = Math.floor(priceValue * 0.1)
