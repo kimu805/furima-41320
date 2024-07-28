@@ -73,6 +73,16 @@ RSpec.describe PurchaseDelivery, type: :model do
         @purchase_delivery.valid?
         expect(@purchase_delivery.errors.full_messages).to include("Token can't be blank")
       end
+      it "userが紐づいていないと登録できない" do
+        @purchase_delivery.user_id = nil
+        @purchase_delivery.valid?
+        expect(@purchase_delivery.errors.full_messages).to include("User can't be blank")
+      end
+      it "itemが紐づいていないと登録できない" do
+        @purchase_delivery.item_id = nil
+        @purchase_delivery.valid?
+        expect(@purchase_delivery.errors.full_messages).to include("Item can't be blank")
+      end
     end
   end
 end
