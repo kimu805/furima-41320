@@ -5,12 +5,12 @@ class PurchasesController < ApplicationController
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @purchase_delivery = PurchaseDelivery.new
-    @item = Item.find(params[:item_id])
+    set_item
   end
 
   def create
     @purchase_delivery = PurchaseDelivery.new(purchase_params)
-    @item = Item.find(params[:item_id])
+    set_item
     if @purchase_delivery.valid?
       pay_item
       @purchase_delivery.save
@@ -36,9 +36,13 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_root_path
-    @item = Item.find(params[:item_id])
+    set_item
     if current_user.id == @item.user.id || !(@item.purchase == nil)
       redirect_to root_path
     end
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 end
