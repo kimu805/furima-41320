@@ -1,6 +1,6 @@
 class PurchaseDelivery
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :municipal, :street, :building, :call
+  attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :municipal, :street, :building, :call, :token
 
   with_options presence: true do
     validates :user_id
@@ -9,8 +9,10 @@ class PurchaseDelivery
     validates :municipal
     validates :street
     validates :call, format: {with: /\A\d{10}\z|\A\d{11}\z/, message: "is invalid. "}
+    validates :token
   end
   validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
+  
 
   def save
     purchase = Purchase.create(user_id: user_id, item_id: item_id)
