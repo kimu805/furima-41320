@@ -5,7 +5,7 @@ function price () {
 
   price.addEventListener("input", () => {
     if (!price) {
-      return false
+      return null
     }
     
     const priceValue = price.value
