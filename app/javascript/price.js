@@ -1,12 +1,13 @@
 function price () {
+  const itemForm = document.getElementsByClassName("item-form")
+  
+  if (!itemForm) return null
+
   const price = document.getElementById("item-price")
   const addTaxPrice = document.getElementById("add-tax-price")
   const profit = document.getElementById("profit")
 
   price.addEventListener("input", () => {
-    if (!price) {
-      return null
-    }
     
     const priceValue = price.value
     
