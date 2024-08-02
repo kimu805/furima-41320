@@ -41,9 +41,20 @@ function preview() {
     const nextDataIndex = Number(lastFileField.getAttribute("data-index")) + 1
     newFileField.setAttribute("data-index", nextDataIndex)
 
+    // 追加されたファイル選択ボタンにchangeイベントをセット
+    newFileField.addEventListener("change", changedFileField)
+
     // 生成したファイル選択ボタンを表示
     const fileFieldsArea = document.querySelector(".click-upload")
     fileFieldsArea.appendChild(newFileField)
+  }
+
+  // 指定したdata-indexを持つプレビューとファイル選択ボタンを削除する。
+  const deleteImage = (dataIndex) => {
+    const deletePreviewImage = document.querySelector(`.preview[data-index="${dataIndex}"]`)
+    deletePreviewImage.remove()
+    const deleteFileField = document.querySelector(`input[type="file"][data-index="${dataIndex}"]`)
+    deleteFileField.remove()
   }
 
   // input要素で値の変化が起きた際に呼び出される関数の中身
@@ -52,13 +63,22 @@ function preview() {
     // data-index（何番目を操作しているか）を取得
     const dataIndex = e.target.getAttribute("data-index")
 
-    const alreadyPreview = document.querySelector(".preview")
-    if (alreadyPreview) {
-      alreadyPreview.remove()
-    }
     
     const file = e.target.files[0]
+
+    if (!file) {
+      deleteImage(dataIndex)
+      return null
+    }
     const blob = window.URL.createObjectURL(file)
+
+    const alreadyPreview = document.querySelector(`.preview[data-index="${dataIndex}"]`)
+
+    if (alreadyPreview) {
+      const alreadyPreviewImage = alreadyPreview.querySelector("img")
+      alreadyPreviewImage.setAttribute("src", blob)
+      return null
+    }
 
     buildPreviewImage(dataIndex, blob)
     buildNewFileField()
