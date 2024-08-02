@@ -1,6 +1,7 @@
 function preview() {
   // 商品の新規登録・編集フォームを取得。
   const itemForm = document.getElementsByClassName("item_form")
+  
 
   // プレビューを取得するためのスペースを取得
   const previewList = document.getElementById("previews")
