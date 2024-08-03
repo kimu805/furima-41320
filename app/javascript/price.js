@@ -1,7 +1,7 @@
 function price () {
-  const itemForm = document.getElementsByClassName("item-form")
+  const itemForm = document.getElementsByClassName("item_form")
   
-  if (!itemForm) return null
+  if (itemForm.length == 0) return null
 
   const price = document.getElementById("item-price")
   const addTaxPrice = document.getElementById("add-tax-price")

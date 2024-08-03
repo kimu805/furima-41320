@@ -7,10 +7,17 @@
       <%= @item.name %>
     </h2>
     <div class="item-img-content">
-      <%= image_tag @item.image ,class:"item-box-img" %>
-      <% unless @item.purchase == nil %>
+      <%= image_tag @item.images[0] ,class:"item-box-img" %>
+      <% if @item.purchase %>
         <div class="sold-out">
           <span>Sold Out!!</span>
+        </div>
+      <% end %>
+    </div>
+    <div class="other-images">
+      <% @item.images[1..-1].each do |image| %>
+        <div class="other-image-box">
+          <%= image_tag image, class:"other-image" %>
         </div>
       <% end %>
     </div>
