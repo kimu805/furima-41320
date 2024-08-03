@@ -8,6 +8,9 @@ function preview() {
   // フォームがない場合、ここで終了
   if (itemForm.length == 0) return null
 
+  // 投稿できる枚数の制限を定義
+  const imageLimits = 5
+
   // ブレぴゅー画像を生成・表示する関数
   const buildPreviewImage = (dataIndex, blob) => {
     // div要素を生成
@@ -22,8 +25,16 @@ function preview() {
     previewImage.setAttribute("width", "193")
     previewImage.setAttribute("height", "130")
 
+    // 削除ボタンを生成
+    const deleteButton = document.createElement("div")
+    deleteButton.setAttribute("class", "image-delete-button")
+    deleteButton.innerText = "削除"
+
+    deleteButton.addEventListener("click", () => deleteImage(dataIndex))
+
     // 生成したHTMLの要素をブラウザに表示
     previewWrapper.appendChild(previewImage)
+    previewWrapper.appendChild(deleteButton)
     previewList.appendChild(previewWrapper)
   }
 
@@ -55,6 +66,10 @@ function preview() {
     deletePreviewImage.remove()
     const deleteFileField = document.querySelector(`input[type="file"][data-index="${dataIndex}"]`)
     deleteFileField.remove()
+
+    // 画像の枚数が最大の時に削除ボタンを押した場合、file_fieldを１つ追加する。
+    const imageCount = document.querySelectorAll(".preview").length
+    if (imageCount == imageLimits - 1) buildNewFileField()
   }
 
   // input要素で値の変化が起きた際に呼び出される関数の中身
@@ -81,8 +96,10 @@ function preview() {
     }
 
     buildPreviewImage(dataIndex, blob)
-    buildNewFileField()
-   
+    
+    // 画像の枚数制限に引っかからなければ、新しいfile_fieldを追加する。
+    const imageCount = document.querySelectorAll(".preview").length
+    if (imageCount < imageLimits) buildNewFileField()
   }
 
   // input要素を取得
