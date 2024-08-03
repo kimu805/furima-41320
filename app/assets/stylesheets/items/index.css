@@ -6,6 +6,13 @@ a {
   background: #f8f8f8;
 }
 
+.flash-notice{
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  background-color: #4169e1;
+}
+
 /* 画面上部の「人生を変えるフリマアプリ」帯部分 */
 .title-contents {
   width: 100vw;

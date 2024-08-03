@@ -3,15 +3,16 @@ class PurchaseDelivery
   attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :municipal, :street, :building, :call, :token
 
   with_options presence: true do
+    validates :token
     validates :user_id
     validates :item_id
-    validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "が適切ではありません。ハイフンが必要です。"}
+    validates :prefecture_id, numericality: {other_than: 1, message: "を入力してください。"}
     validates :municipal
     validates :street
-    validates :call, format: {with: /\A\d{10}\z|\A\d{11}\z/, message: "is invalid. "}
-    validates :token
+    validates :call, format: {with: /\A\d{10}\z|\A\d{11}\z/, message: "が適切ではありません。 "}
   end
-  validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
+  
   
 
   def save

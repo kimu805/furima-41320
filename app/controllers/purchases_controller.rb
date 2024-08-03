@@ -14,7 +14,7 @@ class PurchasesController < ApplicationController
     if @purchase_delivery.valid?
       pay_item
       @purchase_delivery.save
-      redirect_to root_path
+      redirect_to root_path, notice: "商品「#{@item.name}」を購入しました。"
     else
       gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
       render :index, status: :unprocessable_entity
@@ -37,7 +37,7 @@ class PurchasesController < ApplicationController
 
   def move_to_root_path
     set_item
-    if current_user.id == @item.user.id || !(@item.purchase == nil)
+    if current_user.id == @item.user.id || @item.purchase
       redirect_to root_path
     end
   end

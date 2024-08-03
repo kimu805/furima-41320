@@ -1,5 +1,9 @@
 <%= render "shared/header" %>
-
+<% if flash[:notice].present? %>
+  <div class="flash-notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 <%# 商品の概要 %>
 <div class="item-show">
   <div class="item-box">
