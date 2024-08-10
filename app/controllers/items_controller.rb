@@ -40,6 +40,11 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    @q = Item.ransack(params[:q])
+    @items = @q.result
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :description, :category_id, :condition_id, :shipping_pay_id, :prefecture_id, :shipping_time_id, :price, {images: []}).merge(user_id: current_user.id)
