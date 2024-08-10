@@ -21,4 +21,12 @@ class Item < ApplicationRecord
   end
   validates :images, length: { minimum: 1, maximum: 5, message:"は1枚以上5枚以下にしてください。"}
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["category_id", "condition_id", "created_at", "description", "id", "name", "prefecture_id", "price", "shipping_pay_id", "shipping_time_id", "updated_at", "user_id"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["user"]
+  end
+
 end

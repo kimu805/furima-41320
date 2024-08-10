@@ -1,12 +1,12 @@
 function preview() {
   // 商品の新規登録・編集フォームを取得。
-  const itemForm = document.getElementsByClassName("item_form")
+  const itemImage = document.getElementById("item-image")
 
   // プレビューを取得するためのスペースを取得
   const previewList = document.getElementById("previews")
 
   // フォームがない場合、ここで終了
-  if (itemForm.length == 0) return null
+  if (!itemImage) return null
 
   // 投稿できる枚数の制限を定義
   const imageLimits = 5
