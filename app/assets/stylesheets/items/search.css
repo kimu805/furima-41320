@@ -1,0 +1,17 @@
+.search-box{
+width: 60vw;
+border: 2px solid skyblue;
+padding: 10px;
+margin-bottom: 40px;
+}
+
+.search-box-header{
+  background-color: skyblue;
+  color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.search-field{
+  margin-bottom: 10px;
+}
