@@ -31,6 +31,6 @@ class Item < ApplicationRecord
   end
 
   def liked_by?(user)
-    likes.where(user_id: current_user.id).exists?
+    likes.where(user_id: user.id).exists?
   end
 end
