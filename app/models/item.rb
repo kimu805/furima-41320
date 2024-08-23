@@ -30,4 +30,7 @@ class Item < ApplicationRecord
     ["user"]
   end
 
+  def liked_by?(user)
+    likes.where(user_id: current_user.id).exists?
+  end
 end
