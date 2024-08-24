@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :purchases
+  has_many :likes
+  has_many :comments
   
   validates :nickname, presence: true
   validates :password, format: {

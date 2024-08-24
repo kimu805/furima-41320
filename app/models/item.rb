@@ -2,6 +2,8 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many_attached :images
   has_one :purchase
+  has_many :likes
+  has_many :comments
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
@@ -29,4 +31,7 @@ class Item < ApplicationRecord
     ["user"]
   end
 
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
 end

@@ -1,0 +1,14 @@
+<%= turbo_frame_tag dom_id(item, :like) do %>
+  <% if user_signed_in? %>
+    <% if item.liked_by?(current_user) %>
+      <%= link_to item_likes_path(item.id), data: {turbo_method: :delete}, class: "click-star" do %>
+        <%= image_tag "orange-star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+      <% end %>
+    <% else %>
+      <%= link_to item_likes_path(item.id), data: {turbo_method: :post}, class: "click-star" do %>
+        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+      <% end %>
+    <% end %>
+  <% end %>
+  <span>お気に入り <%= item.likes.count %></span>
+<% end %>
