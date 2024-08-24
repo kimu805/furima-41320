@@ -82,10 +82,7 @@
 
     <div class="option">
       <div class="favorite-btn" id="like-btn<%= @item.id %>">
-        <% if user_signed_in? %>
-          <%= render partial: "likes/like", locals: {item: @item} %>
-        <% end %>
-        <span>お気に入り <%= @item.likes.count %></span>
+        <%= render partial: "likes/like", locals: {item: @item} %>
       </div>
       <div class="report-btn">
         <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
