@@ -1,5 +1,9 @@
 # アプリケーション名
 furima（フリマ）  
+https://furima-41320.onrender.com
+## テスト用アカウント
+・Basic認証ID：admin
+・Basic認証Password：2222
 
 
 <!-- # テーブル設計
