@@ -1,4 +1,4 @@
-# テーブル設計
+<!-- # テーブル設計
 
 ## users テーブル
 
@@ -66,4 +66,4 @@
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :purchase -->
