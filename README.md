@@ -2,8 +2,16 @@
 furima（フリマ）  
 https://furima-41320.onrender.com
 ## テスト用アカウント
-・Basic認証ID：admin
-・Basic認証Password：2222
+・Basic認証ID：admin  
+・Basic認証Password：2222  
+### アカウント１
+・名前：furima太郎  
+・メールアドレス：furima@furima.com  
+・パスワード：a1a1a1  
+### アカウント２
+・名前：furima四郎  
+・メールアドレス：furima@shirou.com  
+・パスワード：a1a1a1  
 
 
 <!-- # テーブル設計
